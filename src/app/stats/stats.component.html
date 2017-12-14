@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm">
+        <h3 class="t-caps">Popular Stats</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+    	<div 
+		    *ngIf="loadstate"
+		    class="loader">
+		</div>
+        <ul>
+			<li *ngFor="let d of data | async">
+				<p>Price {{d.price}}</p>			
+			</li>
+		</ul>
+    </div>
+    <div class="col-sm-6">
+        <p>Average Block Size</p>
+    </div>
+</div>
+ <div class="row">
+    <div class="col-sm-6">
+        <p>Transactions per Day</p>
+    </div>
+    <div class="col-sm-6">
+        <p>Mempool Size</p>
+    </div>
+</div>
