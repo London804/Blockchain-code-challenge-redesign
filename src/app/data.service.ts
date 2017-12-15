@@ -18,7 +18,7 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class DataService {
-	API_URL: string = 'https://api.blockchain.info/price/index-series?base=btc&quote=USD&start=1503145039&scale=7200';
+	API_URL: string = 'https://api.blockchain.info/stats';
 	results: Object[];
 	loadstate: boolean;
 	nameChange: Subject<boolean> = new Subject<boolean>();
@@ -43,7 +43,7 @@ export class DataService {
  		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_URL)
  			.map((res: Response) => 
- 				res.json())
+				res.json())
  			.catch(err => {
 				console.error('handling error within getPhones()', err);
 				const fakeData = [{ name: 'no phones could be loaded' }];
@@ -53,24 +53,12 @@ export class DataService {
 				this.hideLoader();
 				console.log('hideloader', this.loadstate);
       });
+
    }
 
- //  	search() {
-	//   let promise = new Promise((resolve, reject) => {
-	//     let apiURL = 'https://api.blockchain.info/price/index-series?base=btc&quote=USD&start=1503145039&scale=7200';
-	//     this.http.get(apiURL)
-	//       .toPromise()
-	//       .then(
- //        res => { // Success
- //        this.results = res.json().results;
- //        resolve();
- //        },
- //        msg => { // Error
- //        reject(msg);
- //        console.log('error', msg);
- //        });
-	//   });
-	//   return promise;
+	// private extractData(res:Response) {
+ //    	let body = res.json();
+ //    	console.log('body', body);
+ //    	return body || [];
 	// }
-
 }

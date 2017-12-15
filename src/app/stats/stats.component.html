@@ -9,11 +9,16 @@
 		    *ngIf="loadstate"
 		    class="loader">
 		</div>
-        <ul>
+        <!-- <ul>
 			<li *ngFor="let d of data | async">
 				<p>Price {{d.price}}</p>			
 			</li>
-		</ul>
+		</ul> -->
+       <!--  <ul>
+            <li *ngFor='let key of data | values'>
+                Key: {{key.key}}, value: {{key.value}}
+            </li>
+        </ul> -->
     </div>
     <div class="col-sm-6">
         <p>Average Block Size</p>

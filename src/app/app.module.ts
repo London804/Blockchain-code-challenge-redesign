@@ -7,13 +7,15 @@ import {DataService } from './data.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgbdCarouselBasicComponent } from './ngbd-carousel-basic/ngbd-carousel-basic.component';
 import { StatsComponent } from './stats/stats.component';
+import { ValuesPipe } from './values.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NgbdCarouselBasicComponent,
-    StatsComponent
+    StatsComponent,
+    ValuesPipe,
   ],
   imports: [
   	NgbModule.forRoot(),
