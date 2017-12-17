@@ -2,33 +2,43 @@ import { Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '../data.service';
-import { ValuesPipe } from '../values.pipe';
+import { Price } from '../price';
+
 
 @Component({
   selector: 'stats',
   templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.scss'],
-  pipes: [ValuesPipe]
+  styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
 
-    data: Observable<any[]>;
+    dataC: Observable<any[]>;
 	loadstate: boolean;
 	subscription: Subscription;
 
-	constructor(data: DataService) {
-        this.data = data.getData();
+	constructor(private data: DataService) {
+        // this.dataC = data.getData();
         this.loadstate = data.loadstate
         this.subscription = data.nameChange.subscribe((value) => { 
             this.loadstate = value; 
         });
 
-
-
   }
 
-  ngOnInit() {
-  }
+    private posts:Price[] = [];
+    private errorMessage:any = '';
+
+    getPosts() {
+        this.data.getData()
+        .subscribe(
+            posts => this.posts = posts,
+            error => this.errorMessage = <any>error);
+        console.log('posts', this.posts);
+    }
+
+    ngOnInit() {
+      this.getPosts();
+    }
 
     
 

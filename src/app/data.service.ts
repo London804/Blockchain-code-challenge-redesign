@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 import { Http, Response } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Price } from './price';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/interval';
@@ -18,7 +19,7 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class DataService {
-	API_URL: string = 'https://api.blockchain.info/stats';
+	API_URL: string = 'https://api.blockchain.info/stats?format=json&cors=true';
 	results: Object[];
 	loadstate: boolean;
 	nameChange: Subject<boolean> = new Subject<boolean>();
@@ -38,17 +39,12 @@ export class DataService {
 	    this.nameChange.next(this.loadstate);
 	}
 
-	getData(url = this.API_URL) {
+	getData(url = this.API_URL):Observable<Price[]> {
  		this.showLoader();
  		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_URL)
- 			.map((res: Response) => 
-				res.json())
- 			.catch(err => {
-				console.error('handling error within getPhones()', err);
-				const fakeData = [{ name: 'no phones could be loaded' }];
-				return Observable.of(fakeData);
- 			})
+ 			.map(this.extractData)
+ 			.catch(this.handleError)
  			.finally(() => {
 				this.hideLoader();
 				console.log('hideloader', this.loadstate);
@@ -56,9 +52,23 @@ export class DataService {
 
    }
 
-	// private extractData(res:Response) {
- //    	let body = res.json();
- //    	console.log('body', body);
- //    	return body || [];
-	// }
+
+	private extractData(res) {
+    	let body = res.json();
+    	var newObject = Object.keys(body).map(function(key) {
+    		console.log('body', body);
+		   	return body[key];
+		});
+    	// Object.entries({body});
+    	return body || [];
+	}
+
+	private handleError(error:any) {
+	    let errMsg = (error.message) ? error.message :
+	        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+	    console.error(errMsg); // log to console instead
+	    return Observable.throw(errMsg);
+	}
+
+
 }
