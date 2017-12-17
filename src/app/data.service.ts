@@ -55,12 +55,13 @@ export class DataService {
 
 	private extractData(res) {
     	let body = res.json();
-    	var newObject = Object.keys(body).map(function(key) {
-    		console.log('body', body);
-		   	return body[key];
-		});
+    	console.log('body', body.market_price_usd);
+  //   	var newObject = Object.keys(body).map(function(key) {
+    		
+		//    	return body[key];
+		// });
     	// Object.entries({body});
-    	return body || [];
+    	return body;
 	}
 
 	private handleError(error:any) {

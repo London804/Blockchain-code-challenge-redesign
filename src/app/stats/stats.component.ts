@@ -16,6 +16,7 @@ export class StatsComponent implements OnInit {
 	loadstate: boolean;
 	subscription: Subscription;
 
+
 	constructor(private data: DataService) {
         // this.dataC = data.getData();
         this.loadstate = data.loadstate
@@ -34,6 +35,7 @@ export class StatsComponent implements OnInit {
             posts => this.posts = posts,
             error => this.errorMessage = <any>error);
         console.log('posts', this.posts);
+
     }
 
     ngOnInit() {

@@ -1,3 +1,3 @@
 export interface Price {
-	userId: number;
+	market_price_usd: number;
 }
