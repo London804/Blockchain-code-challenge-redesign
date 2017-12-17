@@ -26,7 +26,7 @@ export class StatsComponent implements OnInit {
 
   }
 
-    private posts:Price[] = [];
+    private posts:any = '';
     private errorMessage:any = '';
 
     getPosts() {

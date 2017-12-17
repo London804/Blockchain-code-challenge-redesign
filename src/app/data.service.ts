@@ -39,7 +39,7 @@ export class DataService {
 	    this.nameChange.next(this.loadstate);
 	}
 
-	getData(url = this.API_URL):Observable<Price[]> {
+	getData(url = this.API_URL):Observable<any> {
  		this.showLoader();
  		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_URL)
