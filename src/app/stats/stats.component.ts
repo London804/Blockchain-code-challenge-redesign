@@ -26,8 +26,8 @@ export class StatsComponent implements OnInit {
 
   }
 
-    private price:any = '';
-    private errorMessage:any = '';
+    private price: any = '';
+    private errorMessage: any = '';
 
     getPrice() {
         this.data.getMarketPriceData()
@@ -37,7 +37,7 @@ export class StatsComponent implements OnInit {
         console.log('posts', this.price);
     }
 
-    private size:any = '';
+    private size: any = '';
 
     getBlockSize() {
         this.data.getBlockSizeData()
@@ -47,12 +47,34 @@ export class StatsComponent implements OnInit {
         console.log('size', this.size);
     }
 
+    private transactions: any = '';
+
+    getTransactions() {
+        this.data.getTransactions()
+        .subscribe(
+            transactions => this.transactions = transactions.values[0].y,
+            error => this.errorMessage = <any>error);
+        console.log('transactions', this.transactions);
+    }
+
+    private mempool: any = '';
+
+    getMempool() {
+        this.data.getMempoolSize()
+        .subscribe(
+            mempool => this.mempool = mempool.values[0].y,
+            error => this.errorMessage = <any>error);
+        console.log('mempool', this.mempool);
+    }
+
 
 
 
     ngOnInit() {
       this.getPrice();
       this.getBlockSize();
+      this.getTransactions();
+      this.getMempool();
     }
 
     

@@ -21,7 +21,8 @@ import 'rxjs/add/operator/switchMap';
 export class DataService {
 	API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
 	API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
-
+	API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan=24hours&cors=true&format=json&lang=en"
+	API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=2minutes&format=json&cors=true"
 	loadstate: boolean;
 	nameChange: Subject<boolean> = new Subject<boolean>();
 
@@ -52,7 +53,6 @@ export class DataService {
     	});
     }
 
-
 	getBlockSizeData(url = this.API_Block_Size):Observable<any> {
  		this.showLoader();
  		console.log('showloader', this.loadstate);
@@ -65,9 +65,33 @@ export class DataService {
     	});
     }
 
+    getTransactions(url = this.API_Transactions):Observable<any> {
+ 		this.showLoader();
+ 		console.log('showloader', this.loadstate);
+ 		return this.http.get(this.API_Transactions)
+ 			.map(this.extractData)
+ 			.catch(this.handleError)
+ 			.finally(() => {
+				this.hideLoader();
+				console.log('hideloader', this.loadstate);
+    	});
+    }
+
+    getMempoolSize(url = this.API_Mempool):Observable<any> {
+ 		this.showLoader();
+ 		console.log('showloader', this.loadstate);
+ 		return this.http.get(this.API_Mempool)
+ 			.map(this.extractData)
+ 			.catch(this.handleError)
+ 			.finally(() => {
+				this.hideLoader();
+				console.log('hideloader', this.loadstate);
+    	});
+    }
+
 	private extractData(res) {
     	let body = res.json();
-    	console.log('body', body.market_price_usd);
+    	console.log('body', body);
   //   	var newObject = Object.keys(body).map(function(key) {
     		
 		//    	return body[key];
