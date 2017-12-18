@@ -2,7 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '../data.service';
-import { Price } from '../price';
+// import { Price } from '../price';
 
 
 @Component({
@@ -34,9 +34,9 @@ export class StatsComponent implements OnInit {
         .subscribe(
             price => this.price = price,
             error => this.errorMessage = <any>error);
-        console.log('posts', this.price);
     }
 
+    
     private size: any = '';
 
     getBlockSize() {
@@ -44,7 +44,6 @@ export class StatsComponent implements OnInit {
         .subscribe(
             size => this.size = size.toFixed(2),
             error => this.errorMessage = <any>error);
-        console.log('size', this.size);
     }
 
     private transactions: any = '';
@@ -52,9 +51,8 @@ export class StatsComponent implements OnInit {
     getTransactions() {
         this.data.getTransactions()
         .subscribe(
-            transactions => this.transactions = transactions.values[0].y,
+            transactions => this.transactions = transactions.values[0].y.toLocaleString(),
             error => this.errorMessage = <any>error);
-        console.log('transactions', this.transactions);
     }
 
     private mempool: any = '';
@@ -62,9 +60,8 @@ export class StatsComponent implements OnInit {
     getMempool() {
         this.data.getMempoolSize()
         .subscribe(
-            mempool => this.mempool = mempool.values[0].y,
+            mempool => this.mempool = Math.trunc(mempool.values[0].y).toLocaleString(),
             error => this.errorMessage = <any>error);
-        console.log('mempool', this.mempool);
     }
 
 

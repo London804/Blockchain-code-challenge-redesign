@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Http, Response } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Price } from './price';
+// import { Price } from './price';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/interval';
@@ -22,7 +22,7 @@ export class DataService {
 	API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
 	API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
 	API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan=24hours&cors=true&format=json&lang=en"
-	API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=2minutes&format=json&cors=true"
+	API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=4minutes&format=json&cors=true"
 	loadstate: boolean;
 	nameChange: Subject<boolean> = new Subject<boolean>();
 
@@ -43,67 +43,54 @@ export class DataService {
 
 	getMarketPriceData(url = this.API_Price):Observable<any> {
  		this.showLoader();
- 		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_Price)
  			.map(this.extractData)
  			.catch(this.handleError)
  			.finally(() => {
 				this.hideLoader();
-				console.log('hideloader', this.loadstate);
     	});
     }
 
 	getBlockSizeData(url = this.API_Block_Size):Observable<any> {
  		this.showLoader();
- 		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_Block_Size)
  			.map(this.extractData)
  			.catch(this.handleError)
  			.finally(() => {
 				this.hideLoader();
-				console.log('hideloader', this.loadstate);
     	});
     }
 
     getTransactions(url = this.API_Transactions):Observable<any> {
  		this.showLoader();
- 		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_Transactions)
  			.map(this.extractData)
  			.catch(this.handleError)
  			.finally(() => {
 				this.hideLoader();
-				console.log('hideloader', this.loadstate);
     	});
     }
 
     getMempoolSize(url = this.API_Mempool):Observable<any> {
  		this.showLoader();
- 		console.log('showloader', this.loadstate);
  		return this.http.get(this.API_Mempool)
  			.map(this.extractData)
  			.catch(this.handleError)
  			.finally(() => {
 				this.hideLoader();
-				console.log('hideloader', this.loadstate);
     	});
     }
 
 	private extractData(res) {
     	let body = res.json();
     	console.log('body', body);
-  //   	var newObject = Object.keys(body).map(function(key) {
-    		
-		//    	return body[key];
-		// });
-    	// Object.entries({body});
     	return body;
 	}
 
 	private handleError(error:any) {
 	    let errMsg = (error.message) ? error.message :
 	        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-	    console.error(errMsg); // log to console instead
+	    console.error('Error', errMsg); // log to console instead
 	    return Observable.throw(errMsg);
 	}
 

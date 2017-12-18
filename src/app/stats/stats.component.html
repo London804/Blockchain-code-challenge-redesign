@@ -9,17 +9,6 @@
 		    *ngIf="loadstate"
 		    class="loader">
 		</div>
-        <!-- <ul>
-			<li *ngFor="let d of data">
-				<p>Price {{d.market_price_usd}}</p>			
-			</li>
-		</ul> -->
-        <!-- <ul>
-            <li *ngFor='let key of data | values'>
-                Key: {{key.key}}, value: {{key.value}}
-            </li>
-        </ul> -->
-        
         <div *ngIf="price.market_price_usd">
             ${{price.market_price_usd}}
         </div>
@@ -34,10 +23,22 @@
 </div>
  <div class="row">
     <div class="col-sm-6">
+        <div 
+            *ngIf="loadstate"
+            class="loader">
+        </div>
         <p>Transactions per Day</p>
         <p>{{transactions}}</p>
     </div>
     <div class="col-sm-6">
+        <div 
+            *ngIf="loadstate"
+            class="loader">
+        </div>
+        <div *ngIf="errorMessage">
+            <h3>There is a problem connecting to the API.</h3>
+            <p>Please wait a moment and try again</p>
+        </div>
         <p>Mempool Size</p>
         <p>{{mempool}}</p>
     </div>
