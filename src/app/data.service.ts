@@ -19,8 +19,9 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class DataService {
-	API_URL: string = 'https://api.blockchain.info/stats?format=json&cors=true';
-	results: Object[];
+	API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
+	API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
+
 	loadstate: boolean;
 	nameChange: Subject<boolean> = new Subject<boolean>();
 
@@ -39,19 +40,30 @@ export class DataService {
 	    this.nameChange.next(this.loadstate);
 	}
 
-	getData(url = this.API_URL):Observable<any> {
+	getMarketPriceData(url = this.API_Price):Observable<any> {
  		this.showLoader();
  		console.log('showloader', this.loadstate);
- 		return this.http.get(this.API_URL)
+ 		return this.http.get(this.API_Price)
  			.map(this.extractData)
  			.catch(this.handleError)
  			.finally(() => {
 				this.hideLoader();
 				console.log('hideloader', this.loadstate);
-      });
+    	});
+    }
 
-   }
 
+	getBlockSizeData(url = this.API_Block_Size):Observable<any> {
+ 		this.showLoader();
+ 		console.log('showloader', this.loadstate);
+ 		return this.http.get(this.API_Block_Size)
+ 			.map(this.extractData)
+ 			.catch(this.handleError)
+ 			.finally(() => {
+				this.hideLoader();
+				console.log('hideloader', this.loadstate);
+    	});
+    }
 
 	private extractData(res) {
     	let body = res.json();

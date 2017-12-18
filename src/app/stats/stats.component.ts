@@ -26,20 +26,33 @@ export class StatsComponent implements OnInit {
 
   }
 
-    private posts:any = '';
+    private price:any = '';
     private errorMessage:any = '';
 
-    getPosts() {
-        this.data.getData()
+    getPrice() {
+        this.data.getMarketPriceData()
         .subscribe(
-            posts => this.posts = posts,
+            price => this.price = price,
             error => this.errorMessage = <any>error);
-        console.log('posts', this.posts);
-
+        console.log('posts', this.price);
     }
 
+    private size:any = '';
+
+    getBlockSize() {
+        this.data.getBlockSizeData()
+        .subscribe(
+            size => this.size = size.toFixed(2),
+            error => this.errorMessage = <any>error);
+        console.log('size', this.size);
+    }
+
+
+
+
     ngOnInit() {
-      this.getPosts();
+      this.getPrice();
+      this.getBlockSize();
     }
 
     

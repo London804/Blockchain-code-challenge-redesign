@@ -19,10 +19,17 @@
                 Key: {{key.key}}, value: {{key.value}}
             </li>
         </ul> -->
-        <div> {{posts.market_price_usd}}</div>
+        
+        <div *ngIf="price.market_price_usd">
+            ${{price.market_price_usd}}
+        </div>
     </div>
     <div class="col-sm-6">
-        <p>Average Block Size <span>{{data}}</span></p>
+        <div 
+            *ngIf="loadstate"
+            class="loader">
+        </div>
+        <p>Average Block Size <span>{{size}}</span></p>
     </div>
 </div>
  <div class="row">
