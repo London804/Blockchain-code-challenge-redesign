@@ -14,8 +14,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/switchMap';
 
-
-
 @Injectable()
 export class DataService {
     loadstate: boolean;
@@ -59,6 +57,4 @@ export class DataService {
         console.error('Error', errMsg); // log to console instead
         return Observable.throw(errMsg);
     }
-
-
 }

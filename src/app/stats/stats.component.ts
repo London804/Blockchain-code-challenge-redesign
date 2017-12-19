@@ -31,9 +31,8 @@ export class StatsComponent implements OnInit {
   constructor(private data: DataService) {
         this.loadstate = data.loadstate;
         this.subscription = data.nameChange.subscribe((value) => {
-            this.loadstate = value; 
+            this.loadstate = value;
         });
-
     }
 
     getPrice() {
@@ -41,7 +40,6 @@ export class StatsComponent implements OnInit {
         .subscribe( 
             price => this.price = price,
             error => this.errorMessage_price = <any>error);
-        console.log(this.price);
     }
 
     getBlockSize() {
@@ -74,8 +72,8 @@ export class StatsComponent implements OnInit {
     }
 
     
-  ngOnDestroy() {
-    // prevent memory leak when component destroyed
-    this.subscription.unsubscribe();
-  }
+    ngOnDestroy() {
+        // prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
 }

@@ -7,9 +7,7 @@ import {DataService } from './data.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgbdCarouselBasicComponent } from './ngbd-carousel-basic/ngbd-carousel-basic.component';
 import { StatsComponent } from './stats/stats.component';
-import { ValuesPipe } from './values.pipe';
 import { CurrencyComponent } from './currency/currency.component';
-import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -17,12 +15,10 @@ import { LoaderComponent } from './loader/loader.component';
     AppComponent,
     NgbdCarouselBasicComponent,
     StatsComponent,
-    ValuesPipe,
     CurrencyComponent,
-    LoaderComponent,
   ],
   imports: [
-  	NgbModule.forRoot(),
+    NgbModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     HttpModule
@@ -30,4 +26,5 @@ import { LoaderComponent } from './loader/loader.component';
   providers: [DataService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
