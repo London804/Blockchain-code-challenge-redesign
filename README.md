@@ -36,3 +36,7 @@ Go to this file 'node_modules/webpack-dev-server/client/socket.js' and adjust
 to this
 
 #### const socket = function(url, handlers) {
+
+## Future release
+-Componentize loader
+-Update errors for edge cases

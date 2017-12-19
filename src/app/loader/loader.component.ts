@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'loader',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 
-  constructor() { }
+    loadstate: boolean;
+    subscription: Subscription;
 
-  ngOnInit() {
-  }
+  constructor(private data: DataService) { 
+
+    this.loadstate = data.loadstate;
+        this.subscription = data.nameChange.subscribe((value) => {
+            this.loadstate = value; 
+        });
+
+    // this.data.componentMethodCalled$.subscribe(
+    //     () => {
+    //       alert('(Component2) Method called!');
+    //     }
+    //   );
+    // }
+    }
+
+    ngOnDestroy() {
+        // prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
 
 }
