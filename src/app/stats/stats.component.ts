@@ -12,13 +12,21 @@ import { DataService } from '../data.service';
 })
 export class StatsComponent implements OnInit {
     private price: any = '';
-    private errorMessage: any = '';
+    private errorMessage_price: any = '';
     private size: any = '';
+    private errorMessage_size: any = '';
     private transactions: any = '';
+    private errorMessage_transactions: any = '';
     private mempool: any = '';
+    private errorMessage_mempool: any = '';
 
-	loadstate: boolean;
-	subscription: Subscription;
+    API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
+    API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
+    API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan=24hours&cors=true&format=json&lang=en"
+    API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=4minutes&format=json&cors=true"
+
+	  loadstate: boolean;
+	  subscription: Subscription;
 
 
 	constructor(private data: DataService) {
@@ -30,31 +38,31 @@ export class StatsComponent implements OnInit {
     }
 
     getPrice() {
-        this.data.getMarketPriceData()
+        this.data.getData(this.API_Price)
         .subscribe(
             price => this.price = price,
-            error => this.errorMessage = <any>error);
+            error => this.errorMessage_price = <any>error);
     }
 
     getBlockSize() {
-        this.data.getBlockSizeData()
+        this.data.getData(this.API_Block_Size)
         .subscribe(
             size => this.size = size.toFixed(2),
-            error => this.errorMessage = <any>error);
+            error => this.errorMessage_size = <any>error);
     }
 
     getTransactions() {
-        this.data.getTransactions()
+        this.data.getData(this.API_Transactions)
         .subscribe(
             transactions => this.transactions = transactions.values[0].y.toLocaleString(),
-            error => this.errorMessage = <any>error);
+            error => this.errorMessage_transactions = <any>error);
     }
 
     getMempool() {
-        this.data.getMempoolSize()
+        this.data.getData(this.API_Mempool)
         .subscribe(
             mempool => this.mempool = Math.trunc(mempool.values[0].y).toLocaleString(),
-            error => this.errorMessage = <any>error);
+            error => this.errorMessage_mempool = <any>error);
     }
 
 

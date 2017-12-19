@@ -9,6 +9,14 @@
             <div class="u-centerX">
                 <h5>Market Price USD</h5>
             </div>
+             <div class="u-centerX">
+                <div 
+                    class="alert alert-danger" role="alert"
+                    *ngIf="errorMessage_price">
+                    <p>There is a problem connecting to the API.</p>
+                    <p>Please wait a moment and try again</p>
+                </div>
+            </div>
             <div class="u-centerX">
                  <div 
                     *ngIf="loadstate"
@@ -31,6 +39,14 @@
         <div class="col-sm-6 stats">
             <div class="u-centerX">
                 <h5>Average Block Size</h5>
+            </div>
+            <div class="u-centerX">
+                <div 
+                    class="alert alert-danger" role="alert"
+                    *ngIf="errorMessage_size">
+                    <p>There is a problem connecting to the API.</p>
+                    <p>Please wait a moment and try again</p>
+                </div>
             </div>
             <div class="u-centerX">
                 <div 
@@ -57,7 +73,9 @@
                 <h5>Transactions per Day</h5>
             </div>
             <div class="u-centerX">
-                <div *ngIf="errorMessage">
+                <div 
+                    class="alert alert-danger" role="alert"
+                    *ngIf="errorMessage_transactions">
                     <p>There is a problem connecting to the API.</p>
                     <p>Please wait a moment and try again</p>
                 </div>
@@ -85,7 +103,9 @@
                 <h5>Mempool Size</h5>
             </div>
             <div class="u-centerX">
-                <div *ngIf="errorMessage">
+                <div 
+                    class="alert alert-danger" role="alert"
+                    *ngIf="errorMessage_mempool">
                     <p>There is a problem connecting to the API.</p>
                     <p>Please wait a moment and try again</p>
                 </div>
