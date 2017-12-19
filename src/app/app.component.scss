@@ -39,3 +39,9 @@
 	margin-bottom: 1.25rem;
 	text-transform: uppercase;
 }
+
+.row {
+	// fix grid bug
+	margin-right: 0; 
+    margin-left: 0; 
+}
