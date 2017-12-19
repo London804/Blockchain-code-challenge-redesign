@@ -7,12 +7,28 @@ $medium: 500;
     text-transform: uppercase;
 }
 
-h1,
+h1 {
+	color: $light-blue;
+}
+
 h2,
 h3,
 h4,
 h5,
 h6,
-p {
+p,
+p2 {
     color: $gray-10;
+}
+
+p {
+	margin-bottom: 0.25rem;
+}
+
+span {
+    font-size: 0.8725rem;
+}
+
+.t-alignCenter {
+    text-align: center;
 }

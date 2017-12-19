@@ -5,34 +5,42 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 stats">
             <div class="u-centerX">
-                <div 
-                    *ngIf="loadstate"
-                    class="loader">
-                </div>
                 <h5>Market Price USD</h5>
             </div>
             <div class="u-centerX">
-                <div *ngIf="price.market_price_usd">
-                    ${{price.market_price_usd}}
+                 <div 
+                    *ngIf="loadstate"
+                    class="loader">
+                </div>
+                <div
+                    *ngIf="price.market_price_usd"
+                    class="stats-data">
+                    <h1>${{price.market_price_usd}}</h1>
+                    <span>USD</span>
                 </div>
             </div>
             <div class="u-centerX">
                 <p>Average USD market price across major bitcoin exchanges</p>
             </div>
-            
         </div>
-        <div class="col-sm-6">
+
+        <div class="col-sm-6 stats">
             <div class="u-centerX">
                 <h5>Average Block Size</h5>
+            </div>
+            <div class="u-centerX">
                 <div 
                     *ngIf="loadstate"
                     class="loader">
                 </div>
-            </div>
-            <div class="u-centerX">
-                <p>{{size}}</p>
+                <div
+                    *ngIf="size" 
+                    class="stats-data">
+                    <h1>{{size}}</h1>
+                    <span>Megabytes</span>
+                </div>
             </div>
             <div class="u-centerX">
                 <p>The 24 hour average block size in MB.</p>
@@ -40,39 +48,53 @@
         </div>
     </div>
      <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 stats">
             <div class="u-centerX">
                 <h5>Transactions per Day</h5>
-                <div 
-                    *ngIf="loadstate"
-                    class="loader">
-                </div>
-                  <div *ngIf="errorMessage">
-                    <h3>There is a problem connecting to the API.</h3>
+            </div>
+            <div class="u-centerX">
+                <div *ngIf="errorMessage">
+                    <p>There is a problem connecting to the API.</p>
                     <p>Please wait a moment and try again</p>
                 </div>
             </div>
             <div class="u-centerX">
-                <p>{{transactions}}</p>
+                <div 
+                    *ngIf="loadstate"
+                    class="loader">
+                </div>
+                <div 
+                    *ngIf="transactions"
+                    class="stats-data">
+                    <h1>{{transactions}}</h1>
+                    <span>Transactions</span>
+                </div>
             </div>
             <div class="u-centerX">
                 <p>The aggregate number of confirmed Bitcoin transactions in the past 24 hours.</p>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 stats">
             <div class="u-centerX">
                 <h5>Mempool Size</h5>
-                <div 
-                    *ngIf="loadstate"
-                    class="loader">
-                </div>
-                 <div *ngIf="errorMessage">
-                    <h3>There is a problem connecting to the API.</h3>
+            </div>
+            <div class="u-centerX">
+                <div *ngIf="errorMessage">
+                    <p>There is a problem connecting to the API.</p>
                     <p>Please wait a moment and try again</p>
                 </div>
             </div>
             <div class="u-centerX">
-                <p>{{mempool}}</p>
+                <div 
+                    *ngIf="loadstate"
+                    class="loader">
+                </div>
+                <div 
+                    *ngIf="mempool"
+                    class="stats-data">                    
+                    <h1>{{mempool}}</h1>
+                    <span>Bytes</span>
+                </div>
             </div>
             <div class="u-centerX">
                 <p>The aggregate size of transactions waiting to be confirmed.</p>

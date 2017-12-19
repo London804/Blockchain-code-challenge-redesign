@@ -1,0 +1,16 @@
+@import '../assets/styles/variables';
+
+.stats {
+	min-height: 16.5625rem;
+	
+	& + & {
+		border-left: 0.125rem solid $gray-2;
+
+	}
+}
+
+.stats-data {
+	padding: 1.5rem 0;
+	color: $light-blue;
+	text-align: center;
+}
