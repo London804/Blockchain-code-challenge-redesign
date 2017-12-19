@@ -1,17 +1,29 @@
-<div>
-    <h1>Welcome to {{title}}!</h1>
-</div>
-
-<section class="container">
-    <stats></stats>
+<nav class="navigation">
     <div class="row">
         <div class="col-sm">
-            <h3 class="t-caps">Currency Statistics</h3>
+            <div class="navigation-content">
+                <img 
+                    class="navigation-logo"
+                    src="https://blockchain.info/Resources/white-blockchain.svg" alt="blockchain">
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm">
-            <ngbd-carousel-basic></ngbd-carousel-basic>
+</nav>
+
+<section class="body-content">
+    <stats></stats>
+    <div class="section-container section-container--alt">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h3 class="section-title">Currency Statistics</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <ngbd-carousel-basic></ngbd-carousel-basic>
+                </div>
+            </div>
         </div>
     </div>
 </section>

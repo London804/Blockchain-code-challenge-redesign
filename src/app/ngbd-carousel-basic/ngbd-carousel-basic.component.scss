@@ -1,0 +1,48 @@
+@import '../assets/styles/variables';
+
+.carousel-indicators {
+    bottom: -1.5625rem;
+    
+    li {
+        background-color: lightgrey;
+    }
+
+    .active {
+        background-color: $gray-10;
+    }
+}
+
+.carousel-caption {
+    top: 1.25rem;
+}
+
+.carousel {
+    outline: none;
+}
+
+.carousel-control-prev {
+      background-image: none;
+      text-shadow: 0 0 0.8rem black;
+      transition: all $transition-timing ease;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: -39px 13px 91px -34px rgba(0,0,0,0.75);
+    }
+}
+
+.carousel-control-next {
+    background-image: none;
+    text-shadow: 0 0 0.8rem black;
+    transition: all $transition-timing ease;
+
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 43px 13px 91px -34px rgba(0,0,0,0.75);   
+
+        .carousel-control-next-icon {
+           color: red;
+        }
+    }
+}
