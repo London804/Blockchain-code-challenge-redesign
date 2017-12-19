@@ -2,7 +2,6 @@ import { Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '../data.service';
-// import { Price } from '../price';
 
 
 @Component({
@@ -22,16 +21,16 @@ export class StatsComponent implements OnInit {
 
     API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
     API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
-    API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan=24hours&cors=true&format=json&lang=en"
-    API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=4minutes&format=json&cors=true"
+    API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan=24hours&cors=true&format=json&lang=en";
+    API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=4minutes&format=json&cors=true";
 
-	  loadstate: boolean;
-	  subscription: Subscription;
+    loadstate: boolean;
+    subscription: Subscription;
 
 
-	constructor(private data: DataService) {
-        this.loadstate = data.loadstate
-        this.subscription = data.nameChange.subscribe((value) => { 
+  constructor(private data: DataService) {
+        this.loadstate = data.loadstate;
+        this.subscription = data.nameChange.subscribe((value) => {
             this.loadstate = value; 
         });
 
@@ -39,9 +38,10 @@ export class StatsComponent implements OnInit {
 
     getPrice() {
         this.data.getData(this.API_Price)
-        .subscribe(
+        .subscribe( 
             price => this.price = price,
             error => this.errorMessage_price = <any>error);
+        console.log(this.price);
     }
 
     getBlockSize() {
@@ -75,7 +75,7 @@ export class StatsComponent implements OnInit {
 
     
   ngOnDestroy() {
-  	//prevent memory leak when component destroyed
+    // prevent memory leak when component destroyed
     this.subscription.unsubscribe();
   }
 }

@@ -1,36 +1,48 @@
 @import '../assets/styles/variables';
 
 .carousel-caption {
-    top: 1.5rem;
+	top: 1.5rem;
 }
 
 .carousel {
-    outline: none;
+	outline: none;
 }
 
 .carousel-control-prev {
-      background-image: none;
-      text-shadow: 0 0 0.8rem black;
-      transition: all $transition-timing ease;
+	  background-image: none;
+	  text-shadow: 0 0 0.8rem black;
+	  transition: all $transition-timing ease;
 
-    &:hover {
-        cursor: pointer;
-        box-shadow: -2.4375rem 0.8125rem 5.6875rem -2.125rem rgba(0,0,0,0.75);
-    }
+	&:hover {
+		cursor: pointer;
+		box-shadow: -2.4375rem 0.8125rem 5.6875rem -2.125rem rgba(0,0,0,0.75);
+	}
 }
 
 .carousel-control-next {
-    background-image: none;
-    text-shadow: 0 0 0.8rem black;
-    transition: all $transition-timing ease;
+	background-image: none;
+	text-shadow: 0 0 0.8rem black;
+	transition: all $transition-timing ease;
 
 
-    &:hover {
-        cursor: pointer;
-        box-shadow: 2.4375rem 0.8125rem 5.6875rem -2.125rem rgba(0,0,0,0.75);   
+	&:hover {
+		cursor: pointer;
+		box-shadow: 2.4375rem 0.8125rem 5.6875rem -2.125rem rgba(0,0,0,0.75);   
 
-        .carousel-control-next-icon {
-           color: red;
-        }
-    }
+		.carousel-control-next-icon {
+		   color: red;
+		}
+	}
+}
+
+.carousel-indicators {   
+	bottom: -2.25rem;   
+		
+	li {    
+		background-color: $gray-3;    
+	}   
+	
+	.active {   
+		background-color: $gray-10;   
+	}   
 }
