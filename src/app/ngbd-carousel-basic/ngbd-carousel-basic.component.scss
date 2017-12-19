@@ -1,17 +1,5 @@
 @import '../assets/styles/variables';
 
-.carousel-indicators {
-    bottom: -2.25rem;
-    
-    li {
-        background-color: lightgrey;
-    }
-
-    .active {
-        background-color: $gray-10;
-    }
-}
-
 .carousel-caption {
     top: 1.5rem;
 }
@@ -27,7 +15,7 @@
 
     &:hover {
         cursor: pointer;
-        box-shadow: -39px 13px 91px -34px rgba(0,0,0,0.75);
+        box-shadow: -2.4375rem 0.8125rem 5.6875rem -2.125rem rgba(0,0,0,0.75);
     }
 }
 
@@ -39,7 +27,7 @@
 
     &:hover {
         cursor: pointer;
-        box-shadow: 43px 13px 91px -34px rgba(0,0,0,0.75);   
+        box-shadow: 2.4375rem 0.8125rem 5.6875rem -2.125rem rgba(0,0,0,0.75);   
 
         .carousel-control-next-icon {
            color: red;

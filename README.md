@@ -31,8 +31,8 @@ In Safari 10.2 localhost will not render. To fix the issue please do the followi
 
 Go to this file 'node_modules/webpack-dev-server/client/socket.js' and adjust 
 
-# function socket(url, handlers) {
+#### function socket(url, handlers) {
 
 to this
 
-# const socket = function(url, handlers) {
+#### const socket = function(url, handlers) {

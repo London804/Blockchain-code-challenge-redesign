@@ -17,8 +17,10 @@
                 <div
                     *ngIf="price.market_price_usd"
                     class="stats-data">
-                    <h1>${{price.market_price_usd}}</h1>
-                    <span>USD</span>
+                    <a href="https://blockchain.info/charts/market-price">
+                        <h1>${{price.market_price_usd}}</h1>
+                        <span>USD</span>
+                    </a>
                 </div>
             </div>
             <div class="u-centerX">
@@ -38,8 +40,10 @@
                 <div
                     *ngIf="size" 
                     class="stats-data">
-                    <h1>{{size}}</h1>
-                    <span>Megabytes</span>
+                    <a href="https://blockchain.info/charts/avg-block-size">
+                        <h1>{{size}}</h1>
+                        <span>Megabytes</span>
+                    </a>
                 </div>
             </div>
             <div class="u-centerX">
@@ -66,8 +70,10 @@
                 <div 
                     *ngIf="transactions"
                     class="stats-data">
-                    <h1>{{transactions}}</h1>
-                    <span>Transactions</span>
+                    <a href="https://blockchain.info/charts/n-transactions">
+                        <h1>{{transactions}}</h1>
+                        <span>Transactions</span>
+                    </a>
                 </div>
             </div>
             <div class="u-centerX">
@@ -91,9 +97,11 @@
                 </div>
                 <div 
                     *ngIf="mempool"
-                    class="stats-data">                    
-                    <h1>{{mempool}}</h1>
-                    <span>Bytes</span>
+                    class="stats-data">  
+                    <a href="https://blockchain.info/charts/mempool-size">                  
+                        <h1>{{mempool}}</h1>
+                        <span>Bytes</span>
+                    </a>
                 </div>
             </div>
             <div class="u-centerX">
