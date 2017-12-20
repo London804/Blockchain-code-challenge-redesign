@@ -21,7 +21,7 @@ export class StatsComponent implements OnInit {
 
     API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
     API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
-    API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan=24hours&cors=true&format=json&lang=en";
+    API_Transactions: string = "https://api.blockchain.info/charts/n-transactions?timespan&cors=true&format=json&lang=en";
     API_Mempool: string = "https://api.blockchain.info/charts/mempool-size?timespan=4minutes&format=json&cors=true";
 
     loadstate: boolean;
@@ -52,7 +52,7 @@ export class StatsComponent implements OnInit {
     getTransactions() {
         this.data.getData(this.API_Transactions)
         .subscribe(
-            transactions => this.transactions = transactions.values[0].y.toLocaleString(),
+            transactions => this.transactions = transactions.values.slice(-1)[0].y.toLocaleString(),
             error => this.errorMessage_transactions = <any>error);
     }
 
