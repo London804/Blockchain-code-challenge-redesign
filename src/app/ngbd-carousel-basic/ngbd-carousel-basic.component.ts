@@ -14,7 +14,6 @@ export class NgbdCarouselBasicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  	console.log(this.NGDB.HEADINGS);
 
   }
 

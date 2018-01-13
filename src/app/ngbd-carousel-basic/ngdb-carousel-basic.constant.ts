@@ -1,5 +1,5 @@
 export const ngbdCarouselBasicConstant = {
-	HEADINGS: [
+	SLIDES: [
 		{	
 			href: 'https://blockchain.info/charts/total-bitcoins',
 			img: 'https://i.imgur.com/aFWDdb5.png',

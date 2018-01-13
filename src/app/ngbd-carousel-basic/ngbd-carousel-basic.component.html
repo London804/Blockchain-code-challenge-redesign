@@ -1,12 +1,12 @@
 <ngb-carousel>
     <ng-template 
         ngbSlide
-        *ngFor="let heading of NGDB.HEADINGS">
-        <a href="{{heading.href}}">
-            <img src="{{heading.img}}" alt="{{heading.alt}}">
+        *ngFor="let slide of NGDB.SLIDES">
+        <a href="{{slide.href}}">
+            <img src="{{slide.img}}" alt="{{slide.alt}}">
             <div class="carousel-caption">
-                <h4>{{heading.title}}</h4>
-                <p>{{heading.subtitle}}</p>
+                <h4>{{slide.title}}</h4>
+                <p>{{slide.subtitle}}</p>
             </div>
         </a>
     </ng-template>
