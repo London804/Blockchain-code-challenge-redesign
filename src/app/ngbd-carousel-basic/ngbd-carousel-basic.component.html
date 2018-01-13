@@ -1,37 +1,12 @@
 <ngb-carousel>
-    <ng-template ngbSlide>
-        <a href="https://blockchain.info/charts/total-bitcoins">
-            <img src="https://i.imgur.com/aFWDdb5.png" alt="Bitcoins in Circulation">
+    <ng-template 
+        ngbSlide
+        *ngFor="let heading of NGDB.HEADINGS">
+        <a href="{{heading.href}}">
+            <img src="{{heading.img}}" alt="{{heading.alt}}">
             <div class="carousel-caption">
-                <h4>Bitcoins in Circulation</h4>
-                <p>The total number of bitcoins that have already been mined.</p>
-            </div>
-        </a>
-    </ng-template>
-    <ng-template ngbSlide>
-        <a href="https://blockchain.info/charts/market-price">
-            <img src="https://i.imgur.com/yfZQ8mn.png" alt="Bitcoin Market Price USD">
-            <div class="carousel-caption">
-                <h4>Market Price (USD)</h4>
-                <p>Average USD market price across major bitcoin exchanges.</p>
-            </div>
-        </a>
-    </ng-template>
-    <ng-template ngbSlide>
-        <a href="https://blockchain.info/charts/market-cap">
-            <img src="https://i.imgur.com/QZB4OYU.png" alt="Market Capitalization">
-            <div class="carousel-caption">
-                <h4>Market Capitalization</h4>
-                <p>The total USD value of bitcoin supply in circulation, as calculated by the daily average market price across major exchanges.</p>
-            </div>
-        </a>
-    </ng-template>
-    <ng-template ngbSlide>
-        <a href="https://blockchain.info/charts/trade-volume">
-            <img src="https://i.imgur.com/p2Vmomw.png" alt="USD Exchange Trade Volume">
-            <div class="carousel-caption">
-                <h4>USD Exchange Trade Volume</h4>
-                <p>The total USD of trading volume on major bitcoin exchanges.</p>
+                <h4>{{heading.title}}</h4>
+                <p>{{heading.subtitle}}</p>
             </div>
         </a>
     </ng-template>

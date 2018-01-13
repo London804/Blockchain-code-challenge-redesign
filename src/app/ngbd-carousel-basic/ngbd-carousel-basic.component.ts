@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ngbdCarouselBasicConstant } from './ngdb-carousel-basic.constant';
 
 @Component({
   selector: 'ngbd-carousel-basic',
@@ -7,10 +8,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NgbdCarouselBasicComponent implements OnInit {
+	NGDB = ngbdCarouselBasicConstant;
+
 
   constructor() { }
 
   ngOnInit() {
+  	console.log(this.NGDB.HEADINGS);
+
   }
 
 }

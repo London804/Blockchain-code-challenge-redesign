@@ -40,6 +40,7 @@ export class StatsComponent implements OnInit {
         .subscribe( 
             price => this.price = price,
             error => this.errorMessage_price = <any>error);
+
     }
 
     getBlockSize() {
