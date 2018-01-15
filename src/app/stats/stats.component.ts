@@ -2,7 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '../data.service';
-
+import { statsConstant } from './stats.constant';
 
 @Component({
   selector: 'stats',
@@ -18,6 +18,8 @@ export class StatsComponent implements OnInit {
     private errorMessage_transactions: any = '';
     private mempool: any = '';
     private errorMessage_mempool: any = '';
+
+    stats = statsConstant;
 
     API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
     API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
@@ -64,12 +66,18 @@ export class StatsComponent implements OnInit {
             error => this.errorMessage_mempool = <any>error);
     }
 
+    statValues: Object = {
+        value: this.price
+    }
+
 
     ngOnInit() {
       this.getPrice();
       this.getBlockSize();
       this.getTransactions();
       this.getMempool();
+
+      console.log('constant', this.stats);
     }
 
     
