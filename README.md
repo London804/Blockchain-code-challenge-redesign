@@ -36,3 +36,6 @@ Go to this file 'node_modules/webpack-dev-server/client/socket.js' and adjust
 to this
 
 #### const socket = function(url, handlers) {
+
+## To Do
+Refactoring Popular Stats section to loop through data from an object similar to the Statistics section. This is currently a WIP on the statsRefactor branch.
