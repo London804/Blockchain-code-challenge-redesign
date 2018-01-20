@@ -10,14 +10,14 @@ import { DataService } from '../data.service';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-    private price: any = '';
-    private errorMessage_price: any = '';
-    private size: any = '';
-    private errorMessage_size: any = '';
-    private transactions: any = '';
-    private errorMessage_transactions: any = '';
-    private mempool: any = '';
-    private errorMessage_mempool: any = '';
+    price: any = '';
+    errorMessage_price: any = '';
+    size: any = '';
+    errorMessage_size: any = '';
+    transactions: any = '';
+    errorMessage_transactions: any = '';
+    mempool: any = '';
+    errorMessage_mempool: any = '';
 
     API_Price: string = "https://api.blockchain.info/stats?format=json&cors=true";
     API_Block_Size: string = "https://api.blockchain.info/q/24hravgblocksize?cors=true";
